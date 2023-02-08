@@ -12,7 +12,7 @@ if(can_move){
 		//corrects speed for diagonal movement
 		hspd = lengthdir_x(spd,dir);
 		vspd = lengthdir_y(spd,dir);
-	}
+	} 
 	
 	collision(); //movement and collision
 	
