@@ -1,0 +1,98 @@
+Made by STANN.co
+The GarfieldRPG textbox system has plenty of functions for good ol' fun. Here's a guide on how to use em.
+To call a message
+
+	You must tie each individual message to an array
+	Then use the text_box function with that array, to make the textbox appear.
+	You must have a semicollon in front of the actual message
+	
+		text[0] = ";first message";
+		text[1] = ";second message";
+		text[2] = ";third message";
+	
+		text_box(text);
+			
+message activators!
+	
+	Portraits can be switched with #port_
+	If it's the first message and no portrait is stated, it'll simply be blank
+	If it's not the first message, and no portrait is stated, it'll use the previous message's portrait
+	If you need a blank message in the middle of a conversation, use #port_none#
+	
+		text[0] = "#port_garfield_bored#	;Good morning Jon";
+		text[1] = "#port_jon_sad# 			;Good morning Garfield";
+		text[2] = "#port_none# 				;Despite their comments, it is actually a horrible morning";
+		text_box(text);
+		
+	Switching fonts
+	there is a default font, but it can be changed if neccesary with #f_
+	
+		text[0] = "#port_garfield_bored#						;What a boring day";
+		text[1] = "#port_sans_undertale#	 #f_comic_sans#		;Hey";
+		text[2] = "#port_garfield_annoyed#	 #f_action_man#		;wrong game pal";
+		text_box(text);
+		
+	Still portrait
+	by default the portraits will wave up and down. that can be changed with #still#
+	
+		text[0] = "#port_garfield_bored#			;My head is going up and down";
+		text[1] = "#port_garfield_bored#   #still#	;But now it's all still";
+		text_box(text);
+		
+	No sound
+	self-explanatory #nosound#
+	
+	Custom sound
+	by default the sound is indicated by the portrait name. That can be changed with #sound_
+	Also. If the you follow the name with "_playonce" the sound won't loop, good for say Odie's bark noises
+	
+		text[0] = "#port_garfield_annoyed#	#nosound#				;Why is my voice all silent";
+		text[1] = "#port_garfield_annoyed#	#sound_vo_jon#			;What the- now i have Jon's voice???";
+		text[2] = "#port_odie_happy#		#sound_bark_playonce	;woof!";
+		text_box(text);
+		
+	Execute
+	Executes a script after the message is done
+	#execute_[the script to execute]#
+	
+		text[0] = "#port_garfield_angry#	#execute_kick_odie_off_table#	;You Stupid mutt! You're going into orbit";
+		text[1] = "#port_odie_surprise#		#sound_Odie_yelp_playonce#		;Owwww";
+		text[2] = "#port_garfield_angry#									;You stay off the table!!!!";
+		text_box(text);
+	
+	Choice (turns certain other activators off)
+	The question text is written after the last ;
+	A single choice is written like so:
+	#choice_[index in array to go to, next] ; [script to execute, if any] ; [Choice text]#
+	
+		
+		text[0] = "#port_jon#												;Garfield please get rid of the mouse!!!";
+		text[1] = "#choice_2;mouseQuest_script;okay...#   #choice_3;;NO"#  ;Will you get rid of the mouse?"
+		
+		text[2] = "#port_jon_happy#	  #close#								;Oh thank you thank you thank you!!!";
+
+		text[3] = "#port_jon_angry#											;You never do anything useful!!!";
+		text_box(text);
+	
+Text effects
+
+	Colored Text
+	Can change the color of some letters
+	Colors available: red blue green pink purple cyan yellow orange rainbow
+	/c([the color to use]) to set the start of the color effect. And /c to stop the color effect again
+	
+		text[0] = "#port_jon_sad#		;I'm feeling really /c(blue)blue today...";
+		text[1] = "#port_garfield_smug#	;Why not cook some /c(orange)lasagna/c to lift your spirits";
+		text[2] = "#port_jon_angry#		;We need to eat more /c(green)greens/c in this house Garfield!";
+		text[3] = "#port_garfield_smug#	;My diet consists of/c(rainbow) all the colors in the rainbow/c Jon";
+		text_box(text);
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
