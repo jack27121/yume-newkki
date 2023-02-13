@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "SnowState",
-    "path": "folders/extensions/SnowState.yy",
+    "path": "folders/Extensions/SnowState.yy",
   },
 }

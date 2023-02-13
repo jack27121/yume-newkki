@@ -14,7 +14,7 @@ function text_box(text_array){
 ///@param  width
 ///@param  height
 ///@desc   creates text object
-function text_init(input, obj, x_ = global.view_w/2, y_ = global.view_h-50,width = global.view_w-50, height = global.view_h /3) {
+function text_init(input, obj, x_ = global.game_w/2, y_ = global.game_h-50,width = global.game_w-50, height = global.game_h /3) {
 	
 	obj.x = x_;
 	obj.y = y_;

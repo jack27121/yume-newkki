@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Verbs",
-    "path": "folders/extensions/Input/Verbs.yy",
+    "path": "folders/Extensions/Input/Verbs.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Vibration",
-    "path": "folders/extensions/Input/Vibration.yy",
+    "path": "folders/Extensions/Input/Vibration.yy",
   },
 }

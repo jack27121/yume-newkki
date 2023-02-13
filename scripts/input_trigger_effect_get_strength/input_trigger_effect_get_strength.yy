@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Trigger Effects",
-    "path": "folders/extensions/Input/Trigger Effects.yy",
+    "path": "folders/Extensions/Input/Trigger Effects.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Configuration - Please edit these scripts!",
-    "path": "folders/extensions/Input/Configuration - Please edit these scripts!.yy",
+    "path": "folders/Extensions/Input/Configuration - Please edit these scripts!.yy",
   },
 }

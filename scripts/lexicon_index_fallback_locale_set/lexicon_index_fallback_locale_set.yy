@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Index",
-    "path": "folders/extensions/Lexicon/Index.yy",
+    "path": "folders/Extensions/Lexicon/Index.yy",
   },
 }

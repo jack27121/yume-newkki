@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Language",
-    "path": "folders/extensions/Lexicon/Language.yy",
+    "path": "folders/Extensions/Lexicon/Language.yy",
   },
 }

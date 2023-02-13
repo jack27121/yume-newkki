@@ -1,8 +1,10 @@
 /// @description
 hspd = 0;
 vspd = 0;
-dir = 0;
-spd = 1;
+dir = 270;
+
+spd_base = 1;
+spd = spd_base;
 
 animate = 1;
 
@@ -14,8 +16,18 @@ current_effect = "normal";
 state = new SnowState("normal");
 
 subimg = 0;
+xscale = 1;
+yscale = 1;
 
 sound_pitch = 0;
+ping_pong = true;
+
+choose_direction = function (){
+	if (dir == 0)		 sprite_index = right;
+	else if (dir == 90)  sprite_index = back;
+	else if (dir == 180) sprite_index = left;
+	else if (dir == 270) sprite_index = forward;	
+}
 
 #region normal
 state.add("normal", {
@@ -26,7 +38,7 @@ state.add("normal", {
 		left = spr_player_left;
 		forward = spr_player_forward;
 		
-		sprite_index = forward;
+		choose_direction();
 		
 		sound_pitch = 1;
 		spd = 1;
@@ -46,6 +58,7 @@ state.add("idle", {
 		if(hspd != 0 || vspd != 0){
 			state.change(walking_state);
 		}
+		collision(hspd,vspd); //movement and collision
 	}
 });
 
@@ -56,14 +69,17 @@ state.add("walking", {
 		idle_state = "idle";
 	},
 	step: function(){
-		if (dir == 0)		 sprite_index = right;
-		else if (dir == 90)  sprite_index = back;
-		else if (dir == 180) sprite_index = left;
-		else if (dir == 270) sprite_index = forward;
+		choose_direction();
+		
+		if(footstep_t = 0){
+			audio_play_sound(snd_footstep_regular,0,0,,,sound_pitch);
+			footstep_t = footstep_tmax;
+		} else if(footstep_t > 0) footstep_t--;
 
 		if(hspd == 0 && vspd == 0){
 			state.change(idle_state);
 		}
+		collision(hspd,vspd); //movement and collision
 	}
 });
 #endregion
@@ -102,3 +118,93 @@ state.add_child("walking","stick_walking", {
 	},
 });
 #endregion
+
+#region penguin
+state.add_child("normal","Penguin", {
+	enter: function(){	
+		state.inherit();
+		
+		right	=	spr_player_penguin_right;
+		back	=	spr_player_penguin_back;
+		left	=	spr_player_penguin_left;
+		forward =	spr_player_penguin_forward;
+		
+		sprite_index = forward;
+		
+		sound_pitch = 1;
+		spd = 0.5;
+	},
+	step: function(){
+		state.change("penguin_idle");
+	}
+});
+
+state.add_child("idle","penguin_idle", {
+	enter: function(){
+		state.inherit();
+		spd = 0.5;
+		walking_state = "penguin_walking";
+	},
+	step: function(){
+		state.inherit();
+		if(input_check_pressed("special")){
+			state.change("penguin_slide");
+		}	
+	}
+});
+
+state.add_child("walking","penguin_walking", {
+	enter: function(){
+		state.inherit();
+		idle_state = "penguin_idle";
+	},
+	step: function(){
+		state.inherit();
+		if(input_check_pressed("special")){
+			state.change("penguin_slide");
+		}	
+	}
+});
+
+state.add("penguin_slide", {
+	enter: function(){
+		sprite_index = spr_player_penguin_slide;
+		ping_pong = false;
+		subimg = dir / 30;
+		slide_dir = dir;
+		slide_hspd = hspd;
+		slide_vspd = vspd;
+		spd = 3;
+		audio_play_sound(snd_footstep_regular,0,0,,,2);
+		xscale = 1.2;
+		yscale = 0.8;
+	},
+	step: function(){
+		
+		slide_dir += angle_difference(dir,slide_dir) * 0.06;
+		subimg = round(slide_dir / 30);
+		
+		slide_hspd = lerp(slide_hspd,hspd,0.04);
+		slide_vspd = lerp(slide_vspd,vspd,0.04);
+		
+		if(input_check_pressed("special")){
+			state.change("penguin_idle");
+		};
+		collision(slide_hspd,slide_vspd);
+	},
+	leave: function(){
+		ping_pong = true;
+		dir = round(dir / 90) * 90;
+		if (dir == 360) dir = 0;
+		choose_direction();
+		spd = spd_base;
+		audio_play_sound(snd_footstep_regular,0,0,,,2);
+		xscale = 0.8;
+		yscale = 1.2;
+	}
+});
+#endregion
+
+
+enable_effect(effects_id.stick);
+enable_effect(effects_id.penguin);

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Mouse (Direct)",
-    "path": "folders/extensions/Input/Mouse (Direct).yy",
+    "path": "folders/Extensions/Input/Mouse (Direct).yy",
   },
 }

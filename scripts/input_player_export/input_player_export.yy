@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Exporting and Importing",
-    "path": "folders/extensions/Input/Exporting and Importing.yy",
+    "path": "folders/Extensions/Input/Exporting and Importing.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Accessibility",
-    "path": "folders/extensions/Input/Accessibility.yy",
+    "path": "folders/Extensions/Input/Accessibility.yy",
   },
 }

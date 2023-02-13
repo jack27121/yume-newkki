@@ -14,8 +14,6 @@ if(can_move){
 		vspd = lengthdir_y(spd,dir);
 	} 
 	
-	collision(); //movement and collision
-	
 	if(input_check_pressed("action")){
 		var check_x = x+lengthdir_x(2, dir);
 		var check_y = y+lengthdir_y(2, dir);
@@ -26,12 +24,10 @@ if(can_move){
 		};
 	}
 	
-	if((hspd != 0 || vspd != 0) && footstep_t = 0){
-		audio_play_sound(snd_footstep_regular,0,0,,,sound_pitch);
-		footstep_t = footstep_tmax;
-	} else if(footstep_t > 0) footstep_t--;
-	
 	depth = -y;
+	
+	xscale = lerp(xscale,1,0.1);
+	yscale = lerp(xscale,1,0.1);
 	
 	state.step();
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Classes",
-    "path": "folders/extensions/Input/(System)/Classes.yy",
+    "path": "folders/Extensions/Input/(System)/Classes.yy",
   },
 }

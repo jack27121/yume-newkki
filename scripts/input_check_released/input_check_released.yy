@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Checkers",
-    "path": "folders/extensions/Input/Checkers.yy",
+    "path": "folders/Extensions/Input/Checkers.yy",
   },
 }

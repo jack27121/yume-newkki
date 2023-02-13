@@ -1,8 +1,8 @@
 /// @description
-width = global.view_w-20;
-height = global.view_h /3;
+width = global.game_w-20;
+height = global.game_h /3;
 
-x = global.view_w/2;
+x = global.game_w/2;
 y = height*2;
 
 font[0] = "something went wrong fucko. listen you son of a bitch";
@@ -38,19 +38,19 @@ question[0] = false;
 choices[0,0] = "";
 
 choiceXY[0,0] = 100;		//x
-choiceXY[0,1] = global.view_h-60;	//y
+choiceXY[0,1] = global.game_h-60;	//y
 choiceXY[0,2] = false; 
 
 choiceXY[1,0] = 320;
-choiceXY[1,1] = global.view_h-60;
+choiceXY[1,1] = global.game_h-60;
 choiceXY[1,2] = false; 
 
 choiceXY[2,0] = 210;
-choiceXY[2,1] = global.view_h-75;
+choiceXY[2,1] = global.game_h-75;
 choiceXY[2,2] = false; 
 
 choiceXY[3,0] = 210;
-choiceXY[3,1] = global.view_h-40;
+choiceXY[3,1] = global.game_h-40;
 choiceXY[3,2] = false;
 
 //execute
@@ -126,8 +126,8 @@ state.event_set_default_function("draw_gui", function() {
 	
 	//if it's a choice sequence the question will be drawn in the top middle
 	if (question[@ message_current]){
-		tX = (global.view_w / 2) - (string_width(message[@ message_current]) / 2);
-		tY = (global.view_h - 110);
+		tX = (global.game_w / 2) - (string_width(message[@ message_current]) / 2);
+		tY = (global.game_h - 110);
 	}
 	draw_box(tX,tY,width,height);
 	

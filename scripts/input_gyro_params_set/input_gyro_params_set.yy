@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Gyro",
-    "path": "folders/extensions/Input/Gyro.yy",
+    "path": "folders/Extensions/Input/Gyro.yy",
   },
 }

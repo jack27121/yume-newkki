@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "func",
-    "path": "folders/Scripts/func.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Players",
-    "path": "folders/extensions/Input/(System)/Deprecated/Players.yy",
+    "path": "folders/Extensions/Input/(System)/Deprecated/Players.yy",
   },
 }

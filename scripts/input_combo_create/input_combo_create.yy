@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Extended Verbs",
-    "path": "folders/extensions/Input/Extended Verbs.yy",
+    "path": "folders/Extensions/Input/Extended Verbs.yy",
   },
 }

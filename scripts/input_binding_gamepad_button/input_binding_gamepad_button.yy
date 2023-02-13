@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Binding Creators",
-    "path": "folders/extensions/Input/Binding Creators.yy",
+    "path": "folders/Extensions/Input/Binding Creators.yy",
   },
 }

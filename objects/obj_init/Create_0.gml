@@ -26,7 +26,7 @@ enum effects_id{
 	meemo,
 	nose,
 	scrimblo,
-	pengu,
+	penguin,
 	tv,
 	total
 }
@@ -37,7 +37,7 @@ init_effect(effects_id.stick,"Stick","Very stick like");
 init_effect(effects_id.meemo,"Meemo","Guh?");
 init_effect(effects_id.nose,"Nose","A big sniffer");
 init_effect(effects_id.scrimblo,"Scrimblo","????");
-init_effect(effects_id.pengu,"Pengu","Known to slide around on it's belly");
+init_effect(effects_id.penguin,"Penguin","Known to slide around on it's belly");
 init_effect(effects_id.tv,"TV","Rarely anything worth watching");
 
 
@@ -86,12 +86,12 @@ state.add("start_menu", {
 	},
 	draw: function(){
 		draw_clear(c_black);
-		var middle = global.view_w/2;
+		var middle = global.game_w/2;
 		
 		var w = 80;
 		var h = 60;
 		var x_ = middle-(w/2);
-		var y_ = (global.view_h/3)*2;
+		var y_ = (global.game_h/3)*2;
 		
 		draw_box(x_,y_,w,h,0);
 		
@@ -133,15 +133,15 @@ state.add("pause_menu",{
 	draw: function(){		
 		draw_set_color(black);
 		draw_set_alpha(0.5);
-		draw_rectangle(0,0,global.view_w,global.view_h,0);
+		draw_rectangle(0,0,global.game_w,global.game_h,0);
 		draw_reset_color();
 		
-		var col = global.view_w/3;
+		var col = global.game_w/3;
 		
 		draw_box(0,0,col,text_height*3,0);
-		draw_box(0,global.view_h-(text_height*2),col,text_height*2,0);
+		draw_box(0,global.game_h-(text_height*2),col,text_height*2,0);
 		
-		draw_box(col,0,col*2,global.view_h,0);
+		draw_box(col,0,col*2,global.game_h,0);
 		
 		draw_text_style(0,0,"Effects",color1,color2);
 		draw_text_style(0,text_height,"Items",color1,color2);
@@ -194,11 +194,11 @@ state.add("effects",{
 	draw: function(){
 		draw_clear_alpha(black,0.5);
 
-		var col = global.view_w/2;
+		var col = global.game_w/2;
 		
 		//draws boxes
-		draw_box(0,0,global.view_w,text_height*2,0);
-		draw_box(0,text_height*2,global.view_w,global.view_h-text_height,0);
+		draw_box(0,0,global.game_w,text_height*2,0);
+		draw_box(0,text_height*2,global.game_w,global.game_h-text_height,0);
 		
 		if(effect_num > 0){
 			//draws effect description

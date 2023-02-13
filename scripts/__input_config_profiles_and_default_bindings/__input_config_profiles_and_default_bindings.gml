@@ -20,7 +20,8 @@ INPUT_DEFAULT_PROFILES = {
         
         back:  [input_binding_key(vk_backspace),input_binding_key(ord("X"))],
         action:  [input_binding_key(vk_enter),input_binding_key(vk_space),input_binding_key(ord("Z"))],
-        special: input_binding_key(vk_shift),
+		special:  [input_binding_key(ord("1")),input_binding_key(vk_shift)],
+		wake: [input_binding_key(ord("9"))],
         
         pause: input_binding_key(vk_escape),
     },
@@ -35,6 +36,7 @@ INPUT_DEFAULT_PROFILES = {
         back:  input_binding_gamepad_button(gp_face2),
         action:  [input_binding_gamepad_button(gp_face3),input_binding_gamepad_button(gp_face1)],
         special: input_binding_gamepad_button(gp_face4),
+		wake: input_binding_gamepad_button(gp_select),
         
         pause: input_binding_gamepad_button(gp_start),
     },

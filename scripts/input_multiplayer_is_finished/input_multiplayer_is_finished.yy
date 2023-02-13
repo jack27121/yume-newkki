@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Players",
-    "path": "folders/extensions/Input/Players.yy",
+    "path": "folders/Extensions/Input/Players.yy",
   },
 }

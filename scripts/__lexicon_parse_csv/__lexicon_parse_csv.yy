@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Parsers",
-    "path": "folders/extensions/Lexicon/Internal/Parsers.yy",
+    "path": "folders/Extensions/Lexicon/Internal/Parsers.yy",
   },
 }

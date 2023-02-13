@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Binding Access",
-    "path": "folders/extensions/Input/Binding Access.yy",
+    "path": "folders/Extensions/Input/Binding Access.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Profiles",
-    "path": "folders/extensions/Input/Profiles.yy",
+    "path": "folders/Extensions/Input/Profiles.yy",
   },
 }

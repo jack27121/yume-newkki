@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Cursor",
-    "path": "folders/extensions/Input/Cursor.yy",
+    "path": "folders/Extensions/Input/Cursor.yy",
   },
 }

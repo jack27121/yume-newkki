@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Gamepads (Direct)",
-    "path": "folders/extensions/Input/Gamepads (Direct).yy",
+    "path": "folders/Extensions/Input/Gamepads (Direct).yy",
   },
 }

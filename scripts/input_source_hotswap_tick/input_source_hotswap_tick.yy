@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Deprecated",
-    "path": "folders/extensions/Input/(System)/Deprecated.yy",
+    "path": "folders/Extensions/Input/(System)/Deprecated.yy",
   },
 }

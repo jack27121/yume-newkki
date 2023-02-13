@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "General",
-    "path": "folders/extensions/Lexicon/General.yy",
+    "path": "folders/Extensions/Lexicon/General.yy",
   },
 }

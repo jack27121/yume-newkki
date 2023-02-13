@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Default Bindings",
-    "path": "folders/extensions/Input/(System)/Deprecated/Default Bindings.yy",
+    "path": "folders/Extensions/Input/(System)/Deprecated/Default Bindings.yy",
   },
 }

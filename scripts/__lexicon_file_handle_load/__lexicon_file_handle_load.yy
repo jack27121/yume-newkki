@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Loading",
-    "path": "folders/extensions/Lexicon/Internal/Loading.yy",
+    "path": "folders/Extensions/Lexicon/Internal/Loading.yy",
   },
 }

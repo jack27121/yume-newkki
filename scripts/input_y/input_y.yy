@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "2D Checkers",
-    "path": "folders/extensions/Input/2D Checkers.yy",
+    "path": "folders/Extensions/Input/2D Checkers.yy",
   },
 }

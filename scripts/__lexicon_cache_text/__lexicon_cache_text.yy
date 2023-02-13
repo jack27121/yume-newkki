@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Cache",
-    "path": "folders/extensions/Lexicon/Internal/Cache.yy",
+    "path": "folders/Extensions/Lexicon/Internal/Cache.yy",
   },
 }

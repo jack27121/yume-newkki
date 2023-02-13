@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Keyboard (Direct)",
-    "path": "folders/extensions/Input/Keyboard (Direct).yy",
+    "path": "folders/Extensions/Input/Keyboard (Direct).yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Sources",
-    "path": "folders/extensions/Input/Sources.yy",
+    "path": "folders/Extensions/Input/Sources.yy",
   },
 }

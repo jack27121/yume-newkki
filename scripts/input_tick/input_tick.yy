@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Other",
-    "path": "folders/extensions/Input/Other.yy",
+    "path": "folders/Extensions/Input/Other.yy",
   },
 }

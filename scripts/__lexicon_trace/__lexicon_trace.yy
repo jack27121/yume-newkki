@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Internal",
-    "path": "folders/extensions/Lexicon/Internal.yy",
+    "path": "folders/Extensions/Lexicon/Internal.yy",
   },
 }

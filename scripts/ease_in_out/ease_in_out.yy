@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "easing functions",
-    "path": "folders/Scripts/easing functions.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "File_Types",
-    "path": "folders/extensions/Lexicon/Internal/File_Types.yy",
+    "path": "folders/Extensions/Lexicon/Internal/File_Types.yy",
   },
 }
