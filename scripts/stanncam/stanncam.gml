@@ -150,10 +150,6 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 	
 	#region Drawing functions
 	
-	/// @function draw()
-	/// @param x_ position
-	/// @param y_ position
-	/// @description draws camera
 	static draw = function(x_,y_){
 		__check_surface();
 		var x_scale = obj_stanncam_manager.display_res_w / global.game_w
@@ -163,12 +159,6 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 		draw_surface_stretched(__surf,x_,y_,__display_width,__display_height);
 	}
 	
-	/// @function draw_stretched()
-	/// @param x_ position
-	/// @param y_ position
-	/// @param w_ width
-	/// @param h_ height
-	/// @description draws camera stretched
 	static draw_stretched = function(x_,y_,w,h){
 		__check_surface();
 		x_ *= (obj_stanncam_manager.display_res_w / global.game_w);
@@ -178,8 +168,6 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 		draw_surface_stretched(__surf,x_,y_,w,h);
 	}
 	
-	/// @function draw_fill()
-	/// @description draws camera to fill the entire game window
 	static draw_fill = function(){
 		__check_surface();
 		draw_surface_stretched(__surf,0,0,obj_stanncam_manager.display_res_w,obj_stanncam_manager.display_res_h);
@@ -188,7 +176,6 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 	
 	#region Dynamic functions
 	
-	/// @function clone();
 	/// @description returns a clone of the camera
 	static clone = function(){
 		var clone = new stanncam(x,y,width,height);
@@ -202,7 +189,6 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 		return clone;
 	}
 	
-	/// @function set_size(_width,_height);
 	/// @description sets the camera size
 	/// @param	width
 	/// @param	height

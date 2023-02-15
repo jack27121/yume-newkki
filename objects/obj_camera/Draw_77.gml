@@ -1,4 +1,8 @@
 /// @description
+
+if(post_processing != -1) post_processing();
+
+
 if(global.room_wrap){
 	if(hor!= 0){
 		cam_hor.draw(0,0);
@@ -14,3 +18,6 @@ if(global.room_wrap){
 }
 
 global.camera.draw(0,0);
+
+shader_reset();
+

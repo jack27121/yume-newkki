@@ -7,3 +7,5 @@ cam_hor = global.camera.clone();
 cam_ver = global.camera.clone();
 
 global.room_wrap = false;
+
+post_processing = -1;

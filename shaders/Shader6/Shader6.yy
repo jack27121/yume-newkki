@@ -1,10 +1,10 @@
 {
   "resourceType": "GMShader",
   "resourceVersion": "1.0",
-  "name": "sh_scramble",
-  "type": 1,
+  "name": "Shader6",
   "parent": {
     "name": "Shaders",
     "path": "folders/Shaders.yy",
   },
+  "type": 1,
 }

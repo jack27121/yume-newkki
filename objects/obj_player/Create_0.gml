@@ -2,6 +2,9 @@
 hspd = 0;
 vspd = 0;
 dir = 270;
+controlled = true;
+xDest = undefined;
+yDest = undefined;
 
 spd_base = 1;
 spd = spd_base;
@@ -14,6 +17,9 @@ footstep_tmax = 20;
 current_effect = "normal";
 
 state = new SnowState("normal");
+wakee_state = -1;
+walking_state = -1;
+idle_state = -1;
 
 subimg = 0;
 xscale = 1;
@@ -29,6 +35,16 @@ choose_direction = function (){
 	else if (dir == 270) sprite_index = forward;	
 }
 
+wake_check = function(){
+	if(input_check_pressed("wake")){
+		if(wake_state != -1){
+			state.change(wake_state);
+		} else {
+			audio_play_sound(snd_ui_decline,0,0);	
+		}
+	}
+}
+
 #region normal
 state.add("normal", {
 	enter: function(){
@@ -42,6 +58,7 @@ state.add("normal", {
 		
 		sound_pitch = 1;
 		spd = 1;
+		wake_state = "wake";
 	},
 	step: function(){
 		state.change("idle");
@@ -59,6 +76,7 @@ state.add("idle", {
 			state.change(walking_state);
 		}
 		collision(hspd,vspd); //movement and collision
+		wake_check();
 	}
 });
 
@@ -80,6 +98,25 @@ state.add("walking", {
 			state.change(idle_state);
 		}
 		collision(hspd,vspd); //movement and collision
+		wake_check();
+	}
+});
+
+state.add("wake", {
+	enter: function(){
+		animate = true;
+		subimg = 0;
+		ping_pong = false;
+		sprite_index = spr_player_wake;
+	},
+	step: function(){		
+		subimg = clamp(subimg,0,sprite_get_number(sprite_index));
+		if(animation_end(sprite_index,subimg) && !instance_exists(obj_transition)){
+			transition(rm_bedroom);
+		}
+	},
+	leave: function(){
+		ping_pong = true;
 	}
 });
 #endregion

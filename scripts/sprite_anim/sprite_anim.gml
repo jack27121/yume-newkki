@@ -1,16 +1,3 @@
-function sprite_get_speed_pingpong(subimg = image_index,_sprIndex = sprite_index){
-	
-	if (!variable_instance_exists(self,"ping_pong")) ping_pong = 1;
-	
-	show_debug_message(subimg);
-	if (((subimg div sprite_get_number(_sprIndex)) mod 2) == 0){
-		show_debug_message("flip");	
-		ping_pong = -ping_pong;
-	}
-	
-	return sprite_get_speed(sprite_index) * ping_pong;
-}
-
 /// @param sprite
 /// @param image
 
