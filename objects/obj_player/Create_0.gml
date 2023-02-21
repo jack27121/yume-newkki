@@ -17,7 +17,7 @@ footstep_tmax = 20;
 current_effect = "normal";
 
 state = new SnowState("normal");
-wakee_state = -1;
+wake_state = -1;
 walking_state = -1;
 idle_state = -1;
 
@@ -45,6 +45,10 @@ wake_check = function(){
 	}
 }
 
+state.event_set_default_function("draw", function() {
+	
+});
+
 #region normal
 state.add("normal", {
 	enter: function(){
@@ -59,6 +63,8 @@ state.add("normal", {
 		sound_pitch = 1;
 		spd = 1;
 		wake_state = "wake";
+		walking_state = "walking";
+		idle_state = "idle";
 	},
 	step: function(){
 		state.change("idle");
@@ -69,7 +75,6 @@ state.add("idle", {
 	enter: function(){
 		animate = false;
 		subimg = 1;
-		walking_state = "walking";
 	},
 	step: function(){		
 		if(hspd != 0 || vspd != 0){
@@ -84,7 +89,6 @@ state.add("walking", {
 	enter: function(){
 		animate = true;
 		subimg = 0;
-		idle_state = "idle";
 	},
 	step: function(){
 		choose_direction();
@@ -112,7 +116,13 @@ state.add("wake", {
 	step: function(){		
 		subimg = clamp(subimg,0,sprite_get_number(sprite_index));
 		if(animation_end(sprite_index,subimg) && !instance_exists(obj_transition)){
-			transition(rm_bedroom);
+			if(room != rm_bedroom){
+				transition(rm_bedroom, function(){
+					obj_bedroom_bed.state.change("wake1");
+				});
+			} else { //if it's already in the real bedroom it goes back to idle state
+				state.change(idle_state);
+			}
 		}
 	},
 	leave: function(){
@@ -130,6 +140,9 @@ state.add_child("normal","Stick", {
 		back = spr_player_stick_back;
 		left = spr_player_stick_left;
 		forward = spr_player_stick_forward;
+		wake_state = -1;
+		walking_state = "stick_walking";
+		idle_state = "stick_idle";
 		
 		sprite_index = forward;
 		
@@ -141,19 +154,9 @@ state.add_child("normal","Stick", {
 	}
 });
 
-state.add_child("idle","stick_idle", {
-	enter: function(){
-		state.inherit();
-		walking_state = "stick_walking";	
-	},
-});
+state.add_child("idle","stick_idle", {});
 
-state.add_child("walking","stick_walking", {
-	enter: function(){
-		state.inherit();
-		idle_state = "stick_idle";
-	},
-});
+state.add_child("walking","stick_walking", {});
 #endregion
 
 #region penguin
@@ -165,6 +168,9 @@ state.add_child("normal","Penguin", {
 		back	=	spr_player_penguin_back;
 		left	=	spr_player_penguin_left;
 		forward =	spr_player_penguin_forward;
+		wake_state = -1;
+		walking_state = "penguin_walking";
+		idle_state = "penguin_idle";
 		
 		sprite_index = forward;
 		
@@ -180,7 +186,6 @@ state.add_child("idle","penguin_idle", {
 	enter: function(){
 		state.inherit();
 		spd = 0.5;
-		walking_state = "penguin_walking";
 	},
 	step: function(){
 		state.inherit();
@@ -191,10 +196,6 @@ state.add_child("idle","penguin_idle", {
 });
 
 state.add_child("walking","penguin_walking", {
-	enter: function(){
-		state.inherit();
-		idle_state = "penguin_idle";
-	},
 	step: function(){
 		state.inherit();
 		if(input_check_pressed("special")){
@@ -242,6 +243,114 @@ state.add("penguin_slide", {
 });
 #endregion
 
+#region tv
+tv_screen_draw = function(frame){
+	if(tv_on){
+		var _subimg = PingPongImage(sprite_index,subimg);
+		switch (sprite_index) {
+		    case back:
+		        
+		        break;
+		    case forward:
+				var screen_pos_x = -6;
+				var screen_pos_y = [-22,-21,-22];
+		        draw_sprite(spr_player_tv_screen_static,screen_subimg,x+screen_pos_x,y+screen_pos_y[_subimg])
+		        break;
+			case left:
+				var screen_pos_x = -6;
+				var screen_pos_y = [-24,-25,-24];
+		        draw_sprite_stretched(spr_player_tv_screen_static,screen_subimg,x+screen_pos_x,y+screen_pos_y[_subimg],4,14);
+		        break;
+			case right:
+				var screen_pos_x = 2;
+				var screen_pos_y = [-24,-25,-24];
+		        draw_sprite_stretched(spr_player_tv_screen_static,screen_subimg,x+screen_pos_x,y+screen_pos_y[_subimg],4,14);
+		        break;
+		}
+		screen_subimg+= sprite_get_speed(spr_player_tv_screen_static);
+	}
+}
+
+tv_screen_toggle = function(){
+	if(input_check_pressed("special")){
+		tv_on = !tv_on;
+	}		
+}
+
+state.add_child("normal","TV", {
+	enter: function(){
+		screen_subimg = 0;
+		state.inherit();
+		
+		right =   spr_player_tv_right;
+		back =    spr_player_tv_back;
+		left =    spr_player_tv_left;
+		forward = spr_player_tv_forward;
+		wake_state = -1;
+		walking_state = "tv_walking";
+		idle_state = "tv_idle";
+		tv_on = false;
+		
+		sprite_index = forward;
+		
+		sound_pitch = 1;
+		spd = 1;
+	},
+	step: function(){
+		state.change("tv_idle");
+	}
+});
+
+state.add_child("idle","tv_idle", {
+	step: function(){
+		state.inherit();
+		tv_screen_toggle();
+	},
+	draw: function(){
+		tv_screen_draw();	
+	}
+});
+
+state.add_child("walking","tv_walking", {
+	step: function(){
+		state.inherit();
+		tv_screen_toggle();
+	},
+	draw: function(){
+		tv_screen_draw();	
+	}
+});
+#endregion
+
+#region nose
+state.add_child("normal","Nose", {
+	enter: function(){	
+		state.inherit();
+		
+		right =   spr_player_nose_right;
+		back =    spr_player_nose_back;
+		left =    spr_player_nose_left;
+		forward = spr_player_nose_forward;
+		wake_state = -1;
+		walking_state = "nose_walking";
+		idle_state = "nose_idle";
+		
+		sprite_index = forward;
+		
+		sound_pitch = 0.8;
+		spd = 0.8;
+	},
+	step: function(){
+		state.change("nose_idle");
+	}
+});
+
+state.add_child("idle","nose_idle", {});
+
+state.add_child("walking","nose_walking", {});
+#endregion
 
 enable_effect(effects_id.stick);
 enable_effect(effects_id.penguin);
+enable_effect(effects_id.tv);
+enable_effect(effects_id.nose);

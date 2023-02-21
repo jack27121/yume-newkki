@@ -13,8 +13,8 @@ if(can_move){
 			var check_x = x+lengthdir_x(6, dir);
 			var check_y = y+lengthdir_y(6, dir);
 			var object = instance_place(check_x, check_y, obj_interactable);
-				if (object == noone) object = instance_place(check_x, check_y, obj_interactable_nonSolid);
-				if (object != noone){
+			if (object == noone) object = instance_place(check_x, check_y, obj_interactable_nonSolid);
+			if (object != noone){
 					object.trigger = true;
 			};
 		}

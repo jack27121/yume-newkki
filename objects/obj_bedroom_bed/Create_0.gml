@@ -4,64 +4,99 @@
 event_inherited();
 
 in_bed = false;
-sleep_countdown = -1;
 draw_top = false;
 
 script = function(){
-	sleep1();
+	state.change("sleep1");
 }
 
-sleep1 = function(){
-	obj_player.state.change("normal");
-	with(obj_player){
-		xDest = x;
-		yDest = y;
-		controlled = false;
-	}
-	call_later(0.1,time_source_units_seconds,function(){
-		sleep2();
-	});
-}
+state = new SnowState("idle");
 
-sleep2 = function(){
-	with(obj_player){
-		xDest = other.x;
-		yDest = other.y+14;
-	}
-	draw_top = true;
-	mask_index = spr_blank;
-	timer = call_later(0.1,time_source_units_seconds,function(){
-		if(obj_player.x == obj_player.xDest){
-			call_cancel(timer);
-			sleep3();
-		}
-	},true);
+state.add("idle"){
 	
-}
+};
 
-sleep3 = function(){
-	obj_player.visible = false;
-	image_index = 1;
-	in_bed = true;
-	sleep_countdown = call_later(2,time_source_units_seconds,function(){
-		transition(rm_nexus,room_speed*1);
-	});
-}
-
-wake1 = function(){
-	with(obj_player){
-		visible = true;
-		xDest = other.x-24;
-		yDest = other.y+14;
+state.add("sleep1" ,{
+	enter: function(){
+		with(obj_player){
+			state.change("normal");
+			xDest = x;
+			yDest = y;
+			controlled = false;
+		}
+		t = 0;
+	},
+	step: function(){
+		if(t++ == room_speed * 0.1) state.change("sleep2");
 	}
-	in_bed = false;
-	image_index = 0;
-	timer = call_later(0.1,time_source_units_seconds,function(){
+});
+
+state.add("sleep2",{
+	enter: function(){
+		with(obj_player){
+			xDest = other.x;
+			yDest = other.y+14;
+		}
+		t = 0;
+		draw_top = true;
+		mask_index = spr_blank;
+	},
+	step: function(){
+		if(t++ == room_speed * 0.1) state.change("sleep3");
+	}
+});
+
+state.add("sleep3",{
+	enter: function(){
+		obj_player.visible = false;
+		image_index = 1;
+		in_bed = true;
+		t = 0;
+	},
+	step: function(){
+		if(t++ == room_speed * 2){
+			transition(rm_nexus,room_speed*1);
+		}
+	}
+});
+
+state.add("wake1",{
+	enter: function(){
+		with(obj_player){
+			state.change("normal");
+			x = other.x;
+			y = other.y+14;
+			visible = false;
+			controlled = false;
+		}
+		draw_top = true;
+		mask_index = spr_blank;
+		image_index = 1;
+		t = 0;
+	},
+	step: function(){
+		if(t++ == room_speed * 2){
+			state.change("wake2");
+		}
+	}
+});
+
+state.add("wake2",{
+	enter: function(){
+		with(obj_player){
+			visible = true;
+			xDest = other.x-24;
+			yDest = other.y+14;
+		}
+		in_bed = false;
+		image_index = 0;
+	},
+	step: function(){
 		if(obj_player.x == obj_player.xDest){
-			call_cancel(timer);
 			mask_index = spr_bedroom_bed;
 			obj_player.controlled = true;
 			draw_top = false;
+			state.change("idle");
 		}
-	},true);
-}
+	}
+});

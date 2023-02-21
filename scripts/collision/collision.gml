@@ -1,5 +1,5 @@
 /// @function	collision();
-/// @description   collission
+/// @description   collission sets x,y and returns wether there's been made a collision
 function collision(_hspd,_vspd) {
 	//decimals under 1, are too small to do collission detection, so they're checking minimum 1 pixel ahead
 	var _hspd_ = sign(_hspd) * max(1,abs(_hspd));
@@ -12,7 +12,7 @@ function collision(_hspd,_vspd) {
 		while(!place_meeting(x+sign(_hspd_), y, obj_wall)) {
 			x += sign(_hspd);
 		}
-		_hspd = 0;
+		return true;
 	} else x+= _hspd;
 	
 	// Vertical collisions
@@ -20,6 +20,7 @@ function collision(_hspd,_vspd) {
 		while(!place_meeting(x, y+sign(_vspd_), obj_wall)) {
 			y += sign(_vspd);
 		}
-		_vspd = 0;
+		return true;
 	} else	y+= _vspd;
+	return false
 }

@@ -151,9 +151,9 @@ state.add("pause_menu",{
 	}
 });
 
+effects_selection = 0;
 state.add("effects",{
 	enter: function(){
-		selection = 0;
 		held_effects = effect_get_enabled();
 		effect_num = effect_get_count();
 	},
@@ -161,11 +161,11 @@ state.add("effects",{
 		if(effect_num > 0){
 			if(input_check_pressed("down") || input_check_pressed("up") || input_check_pressed("left") || input_check_pressed("right")){
 				audio_play_sound(snd_ui_hover,0,0);
-				if(input_check_pressed("down")) selection+=2;
-				else if(input_check_pressed("up")) selection-=2;
-				else if(input_check_pressed("right")) selection++;
-				else if(input_check_pressed("left")) selection--;
-				selection = clamp(selection,0,effect_num-1);
+				if(input_check_pressed("down")) effects_selection+=2;
+				else if(input_check_pressed("up")) effects_selection-=2;
+				else if(input_check_pressed("right")) effects_selection++;
+				else if(input_check_pressed("left")) effects_selection--;
+				effects_selection = clamp(effects_selection,0,effect_num-1);
 			}
 			
 			if(input_check_pressed("action")){
@@ -174,7 +174,7 @@ state.add("effects",{
 				//equips the effect for the player
 				//if you equip the effect that's already equipped it unequips it and goes to normal
 				var current_effect = obj_player.current_effect;
-				var new_effect = global.effects[held_effects[selection]].name;
+				var new_effect = global.effects[held_effects[effects_selection]].name;
 				if(current_effect != new_effect){
 					obj_player.state.change(new_effect);
 					obj_player.current_effect = new_effect;
@@ -202,7 +202,7 @@ state.add("effects",{
 		
 		if(effect_num > 0){
 			//draws effect description
-			draw_text_style(0,0,global.effects[held_effects[selection]].description,color1,color2);
+			draw_text_style(0,0,global.effects[held_effects[effects_selection]].description,color1,color2);
 			
 			//draws effect names
 			for (var i = 0; i < effect_num; ++i) {
@@ -220,8 +220,8 @@ state.add("effects",{
 			}
 			
 			//draws selection
-			var x_ = (selection mod 2)*col;
-			var y_ = (floor(selection/2)*text_height)+(text_height*2);
+			var x_ = (effects_selection mod 2)*col;
+			var y_ = (floor(effects_selection/2)*text_height)+(text_height*2);
 			draw_selection(x_,y_,col);
 		}
 		

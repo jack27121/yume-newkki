@@ -3,7 +3,8 @@
 // Inherit the parent event
 event_inherited();
 
+state.step();
+
 if(in_bed && input_check("action")){
-	call_cancel(sleep_countdown);
-	wake1();
+	state.change("wake2");
 }
