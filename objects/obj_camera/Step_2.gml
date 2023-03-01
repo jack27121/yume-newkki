@@ -1,4 +1,12 @@
 /// @description
+
+//toggle fullscreen
+if keyboard_check_pressed(vk_f11){
+	stanncam_toggle_fullscreen();
+	global.settings.fullscreen = window_get_fullscreen();
+	settings_save();
+}
+
 #region wraps around room
 if(global.room_wrap){
 	if(global.camera.follow != undefined){

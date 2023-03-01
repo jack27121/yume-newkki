@@ -116,12 +116,12 @@ state.add("wake", {
 	step: function(){		
 		subimg = clamp(subimg,0,sprite_get_number(sprite_index));
 		if(animation_end(sprite_index,subimg) && !instance_exists(obj_transition)){
-			if(room != rm_bedroom){
+			if(room != rm_bedroom && room != rm_balcony){
 				transition(rm_bedroom, function(){
 					obj_bedroom_bed.state.change("wake1");
-				});
+				},,transition_type.pixelate);
 			} else { //if it's already in the real bedroom it goes back to idle state
-				state.change(idle_state);
+				state.change("normal");
 			}
 		}
 	},
@@ -129,10 +129,26 @@ state.add("wake", {
 		ping_pong = true;
 	}
 });
+
+state.add("shake", {
+	enter: function(){
+		animate = true;
+		subimg = 0;
+		sprite_index = spr_player_shake;
+		audio_play_sound(snd_nope,0,0);
+		controlled = false;
+	},
+	step: function(){
+		if(animation_end(sprite_index,subimg)){
+			state.change(idle_state);
+			controlled = true;
+		}
+	}
+});
 #endregion
 
 #region stick
-state.add_child("normal","Stick", {
+state.add_child("normal","stick", {
 	enter: function(){	
 		state.inherit();
 		
@@ -160,7 +176,7 @@ state.add_child("walking","stick_walking", {});
 #endregion
 
 #region penguin
-state.add_child("normal","Penguin", {
+state.add_child("normal","penguin", {
 	enter: function(){	
 		state.inherit();
 		
@@ -277,7 +293,7 @@ tv_screen_toggle = function(){
 	}		
 }
 
-state.add_child("normal","TV", {
+state.add_child("normal","tv", {
 	enter: function(){
 		screen_subimg = 0;
 		state.inherit();
@@ -323,7 +339,7 @@ state.add_child("walking","tv_walking", {
 #endregion
 
 #region nose
-state.add_child("normal","Nose", {
+state.add_child("normal","nose", {
 	enter: function(){	
 		state.inherit();
 		

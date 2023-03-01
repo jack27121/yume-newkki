@@ -40,15 +40,16 @@ function draw_selection(x_,y_,w,h = text_height,alpha = 0.5,alpha2 = 0.8){
 /// @param text
 /// @param color_top		  
 /// @param color_bottom
+/// @param alpha
 /// @description            draws styled text
-function draw_text_style(x_,y_,text,color_top,color_bottom){
+function draw_text_style(x_,y_,text,color_top,color_bottom,alpha = 1){
 	
 	var offset = 8;
 	draw_set_color(black);
-	draw_set_alpha(0.5);
+	draw_set_alpha(0.5 * alpha);
 	draw_text(x_+offset+1,y_+offset+1,text);
 	draw_reset_color();
-	draw_text_color(x_+offset,y_+offset,text,color_top,color_top,color_bottom,color_bottom,1);
+	draw_text_color(x_+offset,y_+offset,text,color_top,color_top,color_bottom,color_bottom,alpha);
 	
 }
 

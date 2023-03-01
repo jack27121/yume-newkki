@@ -55,7 +55,7 @@ state.add("sleep3",{
 	},
 	step: function(){
 		if(t++ == room_speed * 2){
-			transition(rm_nexus,room_speed*1);
+			transition(rm_balcony_dream,,,transition_type.pixelate);
 		}
 	}
 });

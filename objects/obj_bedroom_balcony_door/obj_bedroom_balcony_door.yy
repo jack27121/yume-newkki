@@ -2,19 +2,20 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_bedroom_balcony_door",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,},
-  ],
+  "eventList": [],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"room_index","path":"objects/obj_door/obj_door.yy",},"value":"rm_balcony",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"spawn_target","path":"objects/obj_door/obj_door.yy",},"value":"inst_5B050E4A",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"offset_y","path":"objects/obj_door/obj_door.yy",},"value":"16",},
+  ],
   "parent": {
     "name": "bedroom",
     "path": "folders/Objects/bedroom.yy",
   },
   "parentObjectId": {
-    "name": "obj_interactable_nonSolid",
-    "path": "objects/obj_interactable_nonSolid/obj_interactable_nonSolid.yy",
+    "name": "obj_door",
+    "path": "objects/obj_door/obj_door.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

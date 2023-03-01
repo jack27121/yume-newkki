@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "post processing",
-    "path": "folders/Shaders/post processing.yy",
+    "name": "tools",
+    "path": "folders/tools.yy",
   },
   "parentObjectId": null,
   "persistent": true,

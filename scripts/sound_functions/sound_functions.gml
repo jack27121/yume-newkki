@@ -30,12 +30,14 @@ function song_stop(){
 }
 
 function song_play(song_name,bpm = 0){
-	conductor_reset();
-	song_stop();
-	global.playing = true;
-	global.song = song_name;
-	global.bpm = bpm;
-	audio_play_sound(global.song,100,true);
+	if(global.song != song_name){
+		conductor_reset();
+		song_stop();
+		global.playing = true;
+		global.song = song_name;
+		global.bpm = bpm;
+		audio_play_sound(global.song,100,true);
+	}
 }
 
 /// @function pitch_change(semitones)

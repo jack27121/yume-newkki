@@ -21,10 +21,8 @@ function item_get(name){
 
 /// @function init_effect
 /// @description adds effect to list
-function init_effect(effect_id,name_,description_){
-	var effect = { name: name_, description: description_};
-	global.effects[effect_id] = effect;
-	
+function init_effect(effect_id,name_){
+	global.effects[effect_id] = name_;
 }
 
 /// @function enable_effect(effect_id,enable)

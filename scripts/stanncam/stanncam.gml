@@ -156,6 +156,9 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 		var y_scale = obj_stanncam_manager.display_res_h / global.game_h
 		x_ *= x_scale;
 		y_ *= y_scale;
+		
+		x_+=fullscreen_stretch_compensate();
+		
 		draw_surface_stretched(__surf,x_,y_,__display_width,__display_height);
 	}
 	
@@ -165,12 +168,15 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 		y_ *= (obj_stanncam_manager.display_res_h / global.game_h);
 		w *= (obj_stanncam_manager.display_res_w / global.game_w);
 		h *= (obj_stanncam_manager.display_res_h / global.game_h);
+		
+		x_+=fullscreen_stretch_compensate();
+		
 		draw_surface_stretched(__surf,x_,y_,w,h);
 	}
 	
 	static draw_fill = function(){
 		__check_surface();
-		draw_surface_stretched(__surf,0,0,obj_stanncam_manager.display_res_w,obj_stanncam_manager.display_res_h);
+		draw_surface_stretched(__surf,fullscreen_stretch_compensate(),0,obj_stanncam_manager.display_res_w,obj_stanncam_manager.display_res_h);
 	}
 	#endregion
 	
@@ -358,6 +364,7 @@ function stanncam(x_ = 0,y_ = 0,width_ = global.game_w,height_ = global.game_h, 
 	#endregion
 	
 	#region Internal functions	
+	
 	//enables viewports and sets viewports size
 	static __check_viewports = function(){
 		view_visible[cam_id] = true;

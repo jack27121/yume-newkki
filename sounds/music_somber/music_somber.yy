@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "music_somber.mp3",
   "type": 0,
-  "volume": 0.14,
+  "volume": 0.29,
 }

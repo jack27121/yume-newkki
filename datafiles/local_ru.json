@@ -1,0 +1,57 @@
+{
+    "language": "Russian",
+    "locale": "ru-RU",
+    "text": {
+		"gui": {
+			"on": "On",
+			"off": "Off",
+			"menu": {
+				"new_game" : "New Game",
+				"load_game" : "Load Game",
+				"settings_name" : "Settings",
+				"quit" : "Quit",
+				"effects" : "Effects",
+				"settings": {
+					"resolution": "Resolution",
+					"resolution.description": "The display resolution",
+					"fullscreen": "Fullscreen",
+					"fullscreen.description": "Toggle fullscreen mode",
+					"stretching": "Stretching",
+					"stretching.description": "Stretch the game to match the window size",
+					"volume": "Volume",
+					"language": "Lanugage",
+				}
+			}
+		},
+        "effects": {
+            "stick": {
+                "name": "Stick",
+                "description": "Very stick like"
+            },
+			"ancient": {
+                "name": "Ancient",
+                "description": "Ancient being that once held immense power"
+            },
+			"meemo": {
+                "name": "Meemo",
+                "description": "Guh?"
+            },
+			"nose": {
+                "name": "Nose",
+                "description": "A big sniffer"
+            },
+			"scrimblo": {
+                "name": "Scrimblo",
+                "description": "????"
+            },
+			"penguin": {
+                "name": "Penguin",
+                "description": "Known to slide around on it's belly"
+            },
+			"tv": {
+                "name": "TV",
+                "description": "Rarely anything worth watching"
+            }
+        }
+    }
+}

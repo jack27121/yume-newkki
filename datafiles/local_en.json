@@ -1,0 +1,69 @@
+{
+    "language": "English",
+    "locale": "en-US",
+    "text": {
+		"gui": {
+			"on": "On",
+			"off": "Off",
+			"yes": "Yes",
+			"no": "No",
+			"menu": {
+				"new_game_name" : "New Game",
+				"new_game" : {
+					"text" : "Create new game",
+					"popup_confirm" : "Override game?",
+				},
+				"load_game_name" : "Load Game",
+				"load_game" : {
+					"text" : "Load game",
+					"load" : "Load",
+					"delete" : "Delete",
+					"popup_confirm" : "Delete game?",
+				},
+				"quit" : "Quit",
+				"effects" : "Effects",
+				"settings_name" : "Settings",
+				"settings": {
+					"resolution": "Resolution",
+					"resolution.description": "The display resolution",
+					"fullscreen": "Fullscreen",
+					"fullscreen.description": "Toggle fullscreen mode",
+					"stretching": "Stretching",
+					"stretching.description": "Stretch the game to match the window size",
+					"volume": "Volume",
+					"language": "Language",
+				}
+			}
+		},
+        "effects": {
+            "stick": {
+                "name": "Stick",
+                "description": "Very stick like"
+            },
+			"ancient": {
+                "name": "Ancient",
+                "description": "Ancient being that once held immense power"
+            },
+			"meemo": {
+                "name": "Meemo",
+                "description": "Guh?"
+            },
+			"nose": {
+                "name": "Nose",
+                "description": "A big sniffer"
+            },
+			"scrimblo": {
+                "name": "Scrimblo",
+                "description": "????"
+            },
+			"penguin": {
+                "name": "Penguin",
+                "description": "Known to slide around on it's belly"
+            },
+			"tv": {
+                "name": "TV",
+                "description": "Rarely anything worth watching"
+            }
+        }
+    }
+}

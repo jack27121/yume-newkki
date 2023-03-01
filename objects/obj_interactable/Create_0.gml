@@ -1,2 +1,5 @@
 /// @description
-depth = -y;
+event_inherited();
+
+script = function(){};
+trigger = false;
