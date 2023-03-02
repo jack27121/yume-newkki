@@ -41,7 +41,10 @@
       ],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"\"forward\"","varType":6,},
   ],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_door_red",
+    "path": "sprites/spr_door_red/spr_door_red.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

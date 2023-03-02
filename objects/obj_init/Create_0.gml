@@ -1,5 +1,7 @@
 /// @description
+game_active = false;
 global.t = 0;
+global.save_slot = 0;
 
 //loads settings or initializes the default ones
 settings_load();
@@ -249,6 +251,8 @@ state.add_child("parent_save","new_save", {
 				} else if(popup_selection == 1){
 					audio_play_sound(snd_ui_confirm,0,0);
 					user_new("save"+string(selection));
+					global.save_slot = selection;
+					game_active = true;
 					state.change("idle");
 					room_goto_next();
 				}
@@ -315,6 +319,8 @@ state.add_child("parent_save","load_save", {
 				if(load_delete == 0){
 					audio_play_sound(snd_ui_confirm,0,0);
 					user_load("save"+string(selection));
+					global.save_slot = selection;
+					game_active = true;
 					state.change("idle");
 					room_goto_next();
 				} else if(load_delete == 1){
