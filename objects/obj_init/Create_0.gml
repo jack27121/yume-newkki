@@ -388,6 +388,8 @@ state.add("pause_menu",{
 				state.change("effects");
 			} else if(selection == 1){
 				state.change("settings");
+			} else if(selection == 2){
+				game_restart();
 			}
 		}
 		
@@ -404,13 +406,14 @@ state.add("pause_menu",{
 		
 		var col = global.game_w/3;
 		
-		draw_box(0,0,col,text_height*3,0);
+		draw_box(0,0,col,text_height*4,0);
 		draw_box(0,global.game_h-(text_height*2),col,text_height*2,0);
 		
 		draw_box(col,0,col*2,global.game_h,0);
 		
 		draw_text_style(0,0,lexicon_text("gui.menu.effects"),color1,color2);
 		draw_text_style(0,text_height,lexicon_text("gui.menu.settings_name"),color1,color2);
+		draw_text_style(0,text_height*2,lexicon_text("gui.menu.quit"),color1,color2);
 		
 		draw_selection(0,text_height*selection,col);
 		
@@ -421,6 +424,12 @@ state.add("pause_menu",{
 effects_selection = 0;
 state.add("effects",{
 	enter: function(){
+		//if not dreaming there's no effects
+		if(room == rm_bedroom || room == rm_balcony){
+			dreaming = false;
+		} else {
+			dreaming = true;
+		}
 		held_effects = effect_get_enabled();
 		effect_num = effect_get_count();
 	},
@@ -435,7 +444,7 @@ state.add("effects",{
 				effects_selection = clamp(effects_selection,0,effect_num-1);
 			}
 			
-			if(input_check_pressed("action")){
+			if(input_check_pressed("action") && dreaming){
 				audio_play_sound(snd_ui_confirm,0,0);
 				
 				//equips the effect for the player
@@ -481,8 +490,11 @@ state.add("effects",{
 				var x_ = (i mod 2)*col;
 				var y_ = (floor(i/2)*text_height)+(text_height*2);
 				
+				//if not dreaming the effects are greyed out
+				var alpha = (dreaming) ? 1 : 0.5;
+				
 				var name =  lexicon_text("effects."+ global.effects[held_effects[i]]+ ".name");
-			    draw_text_style(x_,y_,name,color1,color2);
+			    draw_text_style(x_,y_,name,color1,color2,alpha);
 				
 				//draws selection on equipped effect
 				if(obj_player.current_effect == name){

@@ -65,6 +65,8 @@ state.add("normal", {
 		wake_state = "wake";
 		walking_state = "walking";
 		idle_state = "idle";
+		
+		mask_index = spr_player_mask;
 	},
 	step: function(){
 		state.change("idle");
@@ -164,6 +166,8 @@ state.add_child("normal","stick", {
 		
 		sound_pitch = 2;
 		spd = 0.6;
+		
+		mask_index = spr_player_stick_mask;
 	},
 	step: function(){
 		state.change("stick_idle");
@@ -365,8 +369,3 @@ state.add_child("idle","nose_idle", {});
 
 state.add_child("walking","nose_walking", {});
 #endregion
-
-enable_effect(effects_id.stick);
-enable_effect(effects_id.penguin);
-enable_effect(effects_id.tv);
-enable_effect(effects_id.nose);

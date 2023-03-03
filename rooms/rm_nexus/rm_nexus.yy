@@ -11,6 +11,7 @@
     {"name":"inst_6971A1E5","path":"rooms/rm_nexus/rm_nexus.yy",},
     {"name":"inst_3A04C82A","path":"rooms/rm_nexus/rm_nexus.yy",},
     {"name":"inst_5CA3E288","path":"rooms/rm_nexus/rm_nexus.yy",},
+    {"name":"inst_1A00A5CA","path":"rooms/rm_nexus/rm_nexus.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -23,10 +24,16 @@
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"offset_y","path":"objects/obj_door/obj_door.yy",},"value":"16",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":112.0,"y":208.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_5CA3E288","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_door_blue","path":"objects/obj_door_blue/obj_door_blue.yy",},"properties":[
-            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"room_index","path":"objects/obj_door/obj_door.yy",},"value":"rm_blocks",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"room_index","path":"objects/obj_door/obj_door.yy",},"value":"rm_phones",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"spawn_target","path":"objects/obj_door/obj_door.yy",},"value":"inst_A7B5C21",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"offset_y","path":"objects/obj_door/obj_door.yy",},"value":"16",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":304.0,"y":208.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1A00A5CA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_door_gray","path":"objects/obj_door_gray/obj_door_gray.yy",},"properties":[
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"room_index","path":"objects/obj_door/obj_door.yy",},"value":"rm_bedroom_dream",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"spawn_target","path":"objects/obj_door/obj_door.yy",},"value":"inst_4C613C13",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"offset_x","path":"objects/obj_door/obj_door.yy",},"value":"-16",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"player_direction","path":"objects/obj_door/obj_door.yy",},"value":"\"left\"",},
+          ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":208.0,"y":48.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Background","animationFPS":1.0,"animationSpeedType":1,"colour":4294967295,"depth":100,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"spr_bg_nexus","path":"sprites/spr_bg_nexus/spr_bg_nexus.yy",},"stretch":true,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":false,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

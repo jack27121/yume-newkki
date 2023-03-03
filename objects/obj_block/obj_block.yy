@@ -1,10 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_phone",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-  ],
+  "name": "obj_block",
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -12,8 +10,8 @@
     "path": "folders/Objects.yy",
   },
   "parentObjectId": {
-    "name": "obj_interactable",
-    "path": "objects/obj_interactable/obj_interactable.yy",
+    "name": "obj_wall",
+    "path": "objects/obj_wall/obj_wall.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -31,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_phone",
-    "path": "sprites/spr_phone/spr_phone.yy",
+    "name": "spr_block",
+    "path": "sprites/spr_block/spr_block.yy",
   },
   "spriteMaskId": null,
   "visible": true,
