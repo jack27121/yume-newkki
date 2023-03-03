@@ -22,4 +22,4 @@ gpu_set_blendmode(bm_normal);
 //draw_surface_stretched(portal_surf,0,0,global.camera.__display_width,global.camera.__display_height);
 
 
-draw_surface_stretched(portal_cam.__surf,0,0,global.camera.__display_width,global.camera.__display_height);
+draw_surface_stretched(portal_cam.__surf,fullscreen_stretch_compensate(),0,global.camera.__display_width,global.camera.__display_height);

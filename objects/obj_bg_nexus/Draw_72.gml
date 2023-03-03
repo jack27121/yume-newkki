@@ -7,5 +7,4 @@ var y_ = -global.camera.get_y() - (room_height/2 - global.camera.y)*0.2;
 
 draw_sprite(spr_bg_nexus,0,x_,y_);
 
-
 surface_reset_target();
