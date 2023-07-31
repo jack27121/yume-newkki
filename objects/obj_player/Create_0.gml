@@ -66,6 +66,8 @@ state.add("normal", {
 		walking_state = "walking";
 		idle_state = "idle";
 		
+		footstep_tmax = 20;
+		
 		mask_index = spr_player_mask;
 	},
 	step: function(){
@@ -369,3 +371,36 @@ state.add_child("idle","nose_idle", {});
 
 state.add_child("walking","nose_walking", {});
 #endregion
+
+#region duende
+state.add_child("normal","duende", {
+	enter: function(){	
+		state.inherit();
+		
+		right   = spr_player_duende_right;
+		back    = spr_player_duende_back;
+		left    = spr_player_duende_left;
+		forward = spr_player_duende_forward;
+		wake_state = -1;
+		walking_state = "duende_walking";
+		idle_state = "duende_idle";
+		
+		sprite_index = forward;
+		
+		footstep_tmax = 10;
+		sound_pitch = 3;
+		spd = 1.4;
+		
+		mask_index = spr_player_duende_mask;
+	},
+	step: function(){
+		state.change("duende_idle");
+	}
+});
+
+state.add_child("idle","duende_idle", {});
+
+state.add_child("walking","duende_walking", {});
+#endregion
+
+enable_effect(effects_id.duende,true);

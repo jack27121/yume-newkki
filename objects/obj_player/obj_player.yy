@@ -14,7 +14,7 @@
     "path": "folders/Objects.yy",
   },
   "parentObjectId": null,
-  "persistent": false,
+  "persistent": true,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
@@ -30,8 +30,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_player_forward",
-    "path": "sprites/spr_player_forward/spr_player_forward.yy",
+    "name": "spr_player_wake",
+    "path": "sprites/spr_player_wake/spr_player_wake.yy",
   },
   "spriteMaskId": {
     "name": "spr_player_mask",

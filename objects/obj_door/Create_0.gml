@@ -8,6 +8,7 @@ transition_spd = room_speed * 0.1;
 script = function(){
 	image_index = 1;	
 	audio_play_sound(snd_open_door,0,0,,,0.8);
+	obj_player.state.change(obj_player.idle_state);
 	obj_player.controlled = false;
 	
 	transition(room_index,function(){
@@ -15,6 +16,7 @@ script = function(){
 		if(spawn_target != -1){
 			obj_player.x = spawn_target.x + offset_x;	
 			obj_player.y = spawn_target.y + offset_y;
+			obj_player.controlled = true;
 		}
 		
 		//decides which direction player is facing when spawned

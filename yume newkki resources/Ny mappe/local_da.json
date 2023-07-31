@@ -1,0 +1,64 @@
+{
+    "language": "Dansk",
+    "locale": "da-DK",
+    "text": {
+		"gui": {
+			"on": "Slået til",
+			"off": "Slået fra",
+			"menu": {
+
+				"new_game" : {
+					"text" : "Create new game file",
+					"override" : "Override game file?"
+				},
+
+				"load_game" : {
+					"text" : "Load existing game file",
+				},
+				"settings_name" : "Indstillinger",
+				"quit" : "Afslut",
+				"effects" : "Effekter",
+				"settings": {
+					"resolution": "Opløsning",
+					"resolution.description": "The display resolution",
+					"fullscreen": "Fuldskærm",
+					"fullscreen.description": "Toggle fullscreen mode",
+					"stretching": "Udvid",
+					"stretching.description": "Stretch the game to match the window size",
+					"volume": "Volumen",
+					"language": "Sprog",
+				}
+			}
+		},
+        "effects": {
+            "stick": {
+                "name": "Pind",
+                "description": "Meget pind-elig"
+            },
+			"ancient": {
+                "name": "Old-gammel",
+                "description": "Old-gammel figur der holdte utrolig kræft"
+            },
+			"meemo": {
+                "name": "Meemo",
+                "description": "Guh?"
+            },
+			"nose": {
+                "name": "Næse",
+                "description": "En stor sniffer"
+            },
+			"scrimblo": {
+                "name": "Scrimblo",
+                "description": "????"
+            },
+			"penguin": {
+                "name": "Pingvin",
+                "description": "Kendt for at glide rundt på sin mave"
+            },
+			"tv": {
+                "name": "TV",
+                "description": "Sjælendt der er noget værd at se"
+            }
+        }
+    }
+}

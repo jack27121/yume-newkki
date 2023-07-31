@@ -12,7 +12,7 @@ var y_ = closest.y + lengthdir_y(radius-4,dir) - global.camera.get_y();
 draw_circle(x_,y_,radius,0);
 surface_reset_target();
 
-surface_set_target(portal_cam.__surf);
+surface_set_target(portal_cam.surface);
 gpu_set_blendmode_ext(bm_zero,bm_src_alpha);
 draw_surface(portal_surf,0,0);
 
@@ -22,4 +22,4 @@ gpu_set_blendmode(bm_normal);
 //draw_surface_stretched(portal_surf,0,0,global.camera.__display_width,global.camera.__display_height);
 
 
-draw_surface_stretched(portal_cam.__surf,fullscreen_stretch_compensate(),0,global.camera.__display_width,global.camera.__display_height);
+draw_surface_stretched(portal_cam.surface,stanncam_fullscreen_ratio_compensate(),0,__obj_stanncam_manager.display_res_w,__obj_stanncam_manager.display_res_h);

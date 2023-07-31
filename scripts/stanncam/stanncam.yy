@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Stanncam",
-    "path": "folders/Extensions/Stanncam.yy",
+    "name": "STANNcam",
+    "path": "folders/Extensions/STANNcam.yy",
   },
 }

@@ -54,6 +54,7 @@ enum effects_id{
 	scrimblo,
 	penguin,
 	tv,
+	duende,
 	total
 }
 
@@ -65,6 +66,7 @@ ds_map_add(effects,effects_id.nose,"nose");
 ds_map_add(effects,effects_id.scrimblo,"scrimblo");
 ds_map_add(effects,effects_id.penguin,"penguin");
 ds_map_add(effects,effects_id.tv,"tv");
+ds_map_add(effects,effects_id.duende,"duende");
 
 global.effects = [];
 for (var i = 0; i < effects_id.total; ++i) {
@@ -517,8 +519,8 @@ state.add("settings",{
 		selection = 0;
 		enum MENU_SETTINGS {
 			resolution,
-			fullscreen,
-			stretching,
+			window_mode,
+			keep_aspect_ratio,
 			language,
 			TOTAL
 		}
@@ -554,7 +556,7 @@ state.add("settings",{
 		
 		switch (selection) {
 		    case MENU_SETTINGS.resolution:
-				if(!global.settings.fullscreen){ //can't change res if it's in fullscreen
+				if(global.settings.window_mode == STANNCAM_WINDOW_MODE.windowed){ //can only change res in windowed mode
 				    resolution_new+= side_input;
 					if (resolution_new < 0) resolution_new = RES_LIB.TOTAL-1;
 					if (resolution_new >= RES_LIB.TOTAL) resolution_new = 0;
@@ -567,17 +569,24 @@ state.add("settings",{
 					}
 				}
 		        break;
-		    case MENU_SETTINGS.fullscreen:
+		    case MENU_SETTINGS.window_mode:
 		        if(action || side_input != 0){
-					stanncam_toggle_fullscreen();
-					global.settings.fullscreen = window_get_fullscreen();
+					var new_mode = global.window_mode;
+					if(action) new_mode++;
+					else new_mode+= side_input;	
+					if(new_mode == 3) new_mode = 0;
+					else if (new_mode == -1) new_mode = 2;
+					
+					stanncam_set_window_mode(new_mode);
+					global.settings.window_mode = global.window_mode;
 					settings_save();
 				}
 		        break;
-			case MENU_SETTINGS.stretching:
+			case MENU_SETTINGS.keep_aspect_ratio:
 		        if(action || side_input != 0){
-					stanncam_toggle_stretching();
-					global.settings.stretching = !global.settings.stretching;
+					var keep_aspect_ratio = !stanncam_get_keep_aspect_ratio();
+					stanncam_set_keep_aspect_ratio(keep_aspect_ratio);
+					global.settings.keep_aspect_ratio = keep_aspect_ratio;
 					settings_save();
 				}
 		        break;
@@ -618,9 +627,6 @@ state.add("settings",{
 		draw_box(0,0,global.game_w,text_height*2,0);
 		draw_box(0,text_height*2,global.game_w,global.game_h-text_height,0);
 		
-		//draws description
-		//draw_text_style(0,0,global.effects[held_effects[effects_selection]].description,color1,color2);
-		
 		//resolution
 		var res_color1 = color1;
 		var res_color2 = color2;
@@ -628,20 +634,31 @@ state.add("settings",{
 			var res_color1 = yellow;
 			var res_color2 = yellow_light;
 		}
-		var alpha = global.settings.fullscreen ? 0.5 : 1;
+		//resolution is greyed out when not in windowed mode
+		var alpha = (global.settings.window_mode == STANNCAM_WINDOW_MODE.windowed) ? 1 : 0.5;
 		draw_text_style(0,text_height*2,lexicon_text("gui.menu.settings.resolution"),color1,color2,alpha);
 		var res = string(global.resLib[resolution_new].width) + " / " + string(global.resLib[resolution_new].height);
 		draw_text_style(col,text_height*2,res,res_color1,res_color2,alpha);
 		
-		//fullscreen
-		draw_text_style(0,text_height*3,lexicon_text("gui.menu.settings.fullscreen"),color1,color2);
-		var fullscreen = global.settings.fullscreen ? lexicon_text("gui.on") : lexicon_text("gui.off");
-		draw_text_style(col,text_height*3,fullscreen,color1,color2);
+		//window mode
+		draw_text_style(0,text_height*3,lexicon_text("gui.menu.settings.window_mode"),color1,color2);
+		switch (global.settings.window_mode) {
+		    case STANNCAM_WINDOW_MODE.windowed:
+		        var window_mode = lexicon_text("gui.menu.settings.window_mode.windowed");
+		        break;
+		    case STANNCAM_WINDOW_MODE.fullscreen:
+		        var window_mode = lexicon_text("gui.menu.settings.window_mode.fullscreen");
+		        break;
+			case STANNCAM_WINDOW_MODE.borderless:
+		        var window_mode = lexicon_text("gui.menu.settings.window_mode.borderless");
+		        break;
+		}
+		draw_text_style(col,text_height*3,window_mode,color1,color2);
 		
-		//stretching
-		draw_text_style(0,text_height*4,lexicon_text("gui.menu.settings.stretching"),color1,color2);
-		var stretching = global.settings.stretching ? lexicon_text("gui.on") : lexicon_text("gui.off");
-		draw_text_style(col,text_height*4,stretching,color1,color2);
+		//keep_aspect_ratio
+		draw_text_style(0,text_height*4,lexicon_text("gui.menu.settings.keep_aspect_ratio"),color1,color2);
+		var keep_aspect_ratio = global.settings.keep_aspect_ratio ? lexicon_text("gui.on") : lexicon_text("gui.off");
+		draw_text_style(col,text_height*4,keep_aspect_ratio,color1,color2);
 		
 		//language
 		var res_color1 = color1;
@@ -656,6 +673,23 @@ state.add("settings",{
 		//draws selection
 		var y_ = (selection*text_height)+(text_height*2);
 		draw_selection(0,y_, global.game_w);
+		
+		//draws description
+		switch (selection) {
+		    case MENU_SETTINGS.resolution:
+				var description = lexicon_text("gui.menu.settings.resolution.description")
+		        break;
+		    case MENU_SETTINGS.window_mode:
+				var description = lexicon_text("gui.menu.settings.window_mode.description")
+		        break;
+			case MENU_SETTINGS.keep_aspect_ratio:
+				var description = lexicon_text("gui.menu.settings.keep_aspect_ratio.description")
+		        break;
+			case MENU_SETTINGS.language:
+				var description = lexicon_text("gui.menu.settings.language.description")
+		        break;
+		}	
+		draw_text_style(0,0,description,color1,color2);
 		
 	}
 });

@@ -26,12 +26,16 @@
 				"settings": {
 					"resolution": "Resolution",
 					"resolution.description": "The display resolution",
-					"fullscreen": "Fullscreen",
-					"fullscreen.description": "Toggle fullscreen mode",
-					"stretching": "Stretching",
-					"stretching.description": "Stretch the game to match the window size",
+					"window_mode": "Window mode",
+					"window_mode.description": "Cycle between window modes",
+					"window_mode.windowed": "Windowed",
+					"window_mode.fullscreen": "Fullscreen",
+					"window_mode.borderless": "Borderless windowed",
+					"keep_aspect_ratio": "Keep aspect ratio",
+					"keep_aspect_ratio.description": "Keep the games aspect ratio",
 					"volume": "Volume",
 					"language": "Language",
+					"language.description": "Change the language",
 				}
 			}
 		},
@@ -63,6 +67,10 @@
 			"tv": {
                 "name": "TV",
                 "description": "Rarely anything worth watching"
+            },
+			"duende": {
+                "name": "El Duende",
+                "description": "Interfirencia"
             }
         }
     }

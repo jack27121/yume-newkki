@@ -85,8 +85,8 @@ function settings_struct() constructor {
 
     // Set default values for empty settings file
 
-    fullscreen = false;
-	stretching = false;
+    window_mode = STANNCAM_WINDOW_MODE.windowed;
+	keep_aspect_ratio = false;
 	resolution = RES_LIB.DESKTOP_4_3_960_X_720;
 	volume_master = 1;
 	volume_fx = 1;
